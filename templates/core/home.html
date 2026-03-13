@@ -1,0 +1,383 @@
+{% extends 'base.html' %}
+
+{% block title %}Azizbek Saparbayev — Web & AI Developer{% endblock %}
+
+{% block content %}
+<!-- ============ HERO SECTION ============ -->
+<section id="hero" class="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
+    <!-- Background gradient orbs -->
+    <div class="absolute inset-0 overflow-hidden pointer-events-none">
+        <div class="absolute -top-40 -right-40 w-96 h-96 bg-accent/5 rounded-full blur-3xl"></div>
+        <div class="absolute -bottom-40 -left-40 w-96 h-96 bg-highlight/5 rounded-full blur-3xl"></div>
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-accent/3 rounded-full blur-[100px]"></div>
+    </div>
+
+    <!-- Grid pattern overlay -->
+    <div class="absolute inset-0 opacity-[0.03]"
+         style="background-image: linear-gradient(rgba(148,163,184,.3) 1px, transparent 1px), linear-gradient(90deg, rgba(148,163,184,.3) 1px, transparent 1px); background-size: 60px 60px;">
+    </div>
+
+    <div class="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <!-- Name -->
+        <h1 class="fade-in text-4xl sm:text-5xl md:text-7xl font-bold text-white mb-4 tracking-tight leading-tight">
+            Hi, I'm <span class="gradient-text">Azizbek</span>
+            <br>
+            <span class="gradient-text">Saparbayev</span>
+        </h1>
+
+        <!-- Title -->
+        <div class="fade-in mb-8"
+             x-data="{
+                 texts: ['Web Developer', 'AI Engineer', 'Django Backend Engineer', 'Open Source Contributor'],
+                 current: 0,
+                 displayText: '',
+                 charIndex: 0,
+                 typing: true,
+                 init() {
+                     this.typeEffect();
+                 },
+                 typeEffect() {
+                     const text = this.texts[this.current];
+                     if (this.typing) {
+                         if (this.charIndex < text.length) {
+                             this.displayText += text.charAt(this.charIndex);
+                             this.charIndex++;
+                             setTimeout(() => this.typeEffect(), 80);
+                         } else {
+                             setTimeout(() => { this.typing = false; this.typeEffect(); }, 2000);
+                         }
+                     } else {
+                         if (this.charIndex > 0) {
+                             this.charIndex--;
+                             this.displayText = text.substring(0, this.charIndex);
+                             setTimeout(() => this.typeEffect(), 40);
+                         } else {
+                             this.current = (this.current + 1) % this.texts.length;
+                             this.typing = true;
+                             setTimeout(() => this.typeEffect(), 500);
+                         }
+                     }
+                 }
+             }">
+            <p class="text-xl sm:text-2xl md:text-3xl text-primary-400 font-light">
+                <span x-text="displayText"></span><span class="text-accent animate-pulse">|</span>
+            </p>
+        </div>
+
+        <!-- Tagline -->
+        <p class="fade-in text-lg text-primary-400 max-w-2xl mx-auto mb-10 leading-relaxed">
+            Crafting scalable web applications and intelligent systems from Urgench, Uzbekistan.
+            Passionate about clean code, AI innovation, and open-source.
+        </p>
+
+        <!-- CTA Buttons -->
+        <div class="fade-in flex flex-wrap items-center justify-center gap-4">
+            <a href="#projects"
+               class="group inline-flex items-center px-7 py-3.5 rounded-xl text-sm font-semibold
+                      bg-accent text-primary-950 hover:bg-accent-light
+                      transition-all duration-300 hover:shadow-lg hover:shadow-accent/25 hover:-translate-y-0.5">
+                <span>View Projects</span>
+                <svg class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                </svg>
+            </a>
+            <a href="#contact"
+               class="inline-flex items-center px-7 py-3.5 rounded-xl text-sm font-semibold
+                      border border-primary-600 text-primary-200
+                      hover:border-accent/50 hover:text-accent hover:bg-accent/5
+                      transition-all duration-300 hover:-translate-y-0.5">
+                Contact Me
+            </a>
+            <a href="{{ MEDIA_URL }}cv/Azizbek_Saparbayev_CV.pdf" download
+               class="inline-flex items-center px-7 py-3.5 rounded-xl text-sm font-semibold
+                      border border-primary-700 text-primary-300
+                      hover:border-highlight/50 hover:text-highlight-light hover:bg-highlight/5
+                      transition-all duration-300 hover:-translate-y-0.5">
+                <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
+                </svg>
+                Download CV
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- ============ ABOUT SECTION ============ -->
+<section id="about" class="py-24 px-4 sm:px-6 lg:px-8 border-t border-primary-800/50">
+    <div class="max-w-5xl mx-auto">
+        <!-- Header -->
+        <div class="text-center mb-16 fade-in">
+            <h2 class="text-4xl sm:text-5xl font-bold text-white mb-4">
+                Get to know <span class="gradient-text">me</span>
+            </h2>
+            <p class="text-primary-400 max-w-xl mx-auto">
+                Developer, learner, builder — always pushing the boundaries.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-5 gap-10 items-start">
+            <!-- Avatar / Visual -->
+            <div class="lg:col-span-2 fade-in">
+                <div class="relative">
+                    <div class="aspect-square rounded-2xl overflow-hidden glass glow-teal">
+                        <div class="w-full h-full bg-gradient-to-br from-accent/20 via-highlight/10 to-primary-800 flex items-center justify-center">
+                            <div class="text-center">
+                                <div class="text-8xl mb-4">👨‍💻</div>
+                                <p class="text-accent font-semibold text-lg">Azizbek</p>
+                                <p class="text-primary-400 text-sm">Web & AI Developer</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Decorative elements -->
+                    <div class="absolute -bottom-4 -right-4 w-24 h-24 bg-accent/10 rounded-2xl -z-10"></div>
+                    <div class="absolute -top-4 -left-4 w-16 h-16 bg-highlight/10 rounded-2xl -z-10"></div>
+                </div>
+
+                <!-- Quick Stats -->
+                <div class="grid grid-cols-2 gap-4 mt-8">
+                    <div class="glass rounded-xl p-4 text-center hover:glow-teal transition-all duration-300">
+                        <div class="text-2xl font-bold text-accent">2+</div>
+                        <div class="text-xs text-primary-400 mt-1">Years Experience</div>
+                    </div>
+                    <div class="glass rounded-xl p-4 text-center hover:glow-teal transition-all duration-300">
+                        <div class="text-2xl font-bold text-accent">4+</div>
+                        <div class="text-xs text-primary-400 mt-1">Projects Built</div>
+                    </div>
+                    <div class="glass rounded-xl p-4 text-center hover:glow-teal transition-all duration-300">
+                        <div class="text-2xl font-bold text-accent">6+</div>
+                        <div class="text-xs text-primary-400 mt-1">Technologies</div>
+                    </div>
+                    <div class="glass rounded-xl p-4 text-center hover:glow-teal transition-all duration-300">
+                        <div class="text-2xl font-bold text-accent">∞</div>
+                        <div class="text-xs text-primary-400 mt-1">Curiosity</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bio Text -->
+            <div class="lg:col-span-3 space-y-8">
+                <!-- English Bio -->
+                <div class="fade-in glass rounded-2xl p-8">
+                    <div class="flex items-center gap-2 mb-4">
+                        <span class="text-lg">🇬🇧</span>
+                        <h3 class="text-lg font-semibold text-white">English</h3>
+                    </div>
+                    <div class="space-y-4 text-primary-300 leading-relaxed">
+                        <p>
+                            I'm <strong class="text-white">Azizbek Saparbayev</strong>, a passionate and ambitious Web & AI Developer
+                            based in <strong class="text-accent">Urgench, Uzbekistan</strong>. I specialize in building robust,
+                            scalable backend systems using <strong class="text-accent">Django</strong> and Python, with a deep
+                            interest in integrating AI and machine learning solutions into real-world applications.
+                        </p>
+                        <p>
+                            My journey into software development began with a curiosity about how technology can solve everyday
+                            problems. Since then, I've honed my skills across a wide range of tools and frameworks — from designing
+                            efficient database architectures with PostgreSQL and MySQL to crafting modern, responsive user interfaces
+                            with Tailwind CSS and JavaScript.
+                        </p>
+                        <p>
+                            I'm a firm believer in <strong class="text-white">clean code</strong>, maintainable architecture, and
+                            continuous learning. I thrive in collaborative environments where I can both contribute and grow.
+                            As an <strong class="text-accent">open-source contributor</strong>, I enjoy sharing knowledge and
+                            building tools that empower other developers. Currently, I'm focused on developing enterprise-grade
+                            web applications and exploring cutting-edge AI/ML techniques that push the boundaries of what's possible.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Skills -->
+                <div class="fade-in glass rounded-2xl p-8">
+                    <h3 class="text-lg font-semibold text-white mb-6">Tech Stack</h3>
+                    <div class="flex flex-wrap gap-3">
+                        <span class="px-3 py-1.5 text-sm font-medium rounded-lg bg-accent/10 text-accent border border-accent/20 hover:bg-accent/20 transition-colors cursor-default">Python</span>
+                        <span class="px-3 py-1.5 text-sm font-medium rounded-lg bg-accent/10 text-accent border border-accent/20 hover:bg-accent/20 transition-colors cursor-default">Django</span>
+                        <span class="px-3 py-1.5 text-sm font-medium rounded-lg bg-highlight/10 text-highlight-light border border-highlight/20 hover:bg-highlight/20 transition-colors cursor-default">PostgreSQL</span>
+                        <span class="px-3 py-1.5 text-sm font-medium rounded-lg bg-highlight/10 text-highlight-light border border-highlight/20 hover:bg-highlight/20 transition-colors cursor-default">MySQL</span>
+                        <span class="px-3 py-1.5 text-sm font-medium rounded-lg bg-accent/10 text-accent border border-accent/20 hover:bg-accent/20 transition-colors cursor-default">JavaScript</span>
+                        <span class="px-3 py-1.5 text-sm font-medium rounded-lg bg-accent/10 text-accent border border-accent/20 hover:bg-accent/20 transition-colors cursor-default">Tailwind CSS</span>
+                        <span class="px-3 py-1.5 text-sm font-medium rounded-lg bg-highlight/10 text-highlight-light border border-highlight/20 hover:bg-highlight/20 transition-colors cursor-default">Scikit-learn</span>
+                        <span class="px-3 py-1.5 text-sm font-medium rounded-lg bg-highlight/10 text-highlight-light border border-highlight/20 hover:bg-highlight/20 transition-colors cursor-default">NumPy</span>
+                        <span class="px-3 py-1.5 text-sm font-medium rounded-lg bg-highlight/10 text-highlight-light border border-highlight/20 hover:bg-highlight/20 transition-colors cursor-default">Pandas</span>
+                        <span class="px-3 py-1.5 text-sm font-medium rounded-lg bg-accent/10 text-accent border border-accent/20 hover:bg-accent/20 transition-colors cursor-default">Git</span>
+                        <span class="px-3 py-1.5 text-sm font-medium rounded-lg bg-accent/10 text-accent border border-accent/20 hover:bg-accent/20 transition-colors cursor-default">Docker</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============ EXPERIENCE SECTION ============ -->
+<section id="experience" class="py-24 px-4 sm:px-6 lg:px-8 border-t border-primary-800/50">
+    <div class="max-w-4xl mx-auto">
+        <div class="text-center mb-16 fade-in">
+            <h2 class="text-4xl sm:text-5xl font-bold text-white mb-4">Work <span class="gradient-text">Experience</span></h2>
+            <p class="text-primary-400 max-w-xl mx-auto">My professional journey in software development and data engineering.</p>
+        </div>
+
+        <div class="relative">
+            <div class="absolute left-8 top-0 bottom-0 w-px bg-gradient-to-b from-accent via-highlight to-accent/20"></div>
+
+            {% for exp in experiences %}
+            <div class="fade-in relative mb-12 last:mb-0">
+                <div class="flex items-start gap-8">
+                    <div class="absolute left-8 w-4 h-4 rounded-full bg-accent border-4 border-primary-950 -translate-x-1/2 mt-8 z-10 shadow-lg shadow-accent/30"></div>
+                    <div class="w-16 shrink-0"></div>
+                    <div class="flex-1">
+                        <div class="glass rounded-2xl p-6 sm:p-8 hover:glow-teal transition-all duration-500 group hover:-translate-y-1">
+                            <span class="px-3 py-1 text-xs font-semibold rounded-full bg-accent/10 text-accent border border-accent/20">{{ exp.start_date }} — {{ exp.end_date }}</span>
+                            <h3 class="text-xl font-bold text-white mt-4 mb-1 group-hover:text-accent transition-colors">{{ exp.role }}</h3>
+                            <p class="text-accent font-medium text-sm mb-4">{{ exp.company }}</p>
+                            <ul class="space-y-2">
+                                {% for line in exp.description_lines %}
+                                <li class="flex items-start gap-3 text-sm text-primary-300">
+                                    <svg class="w-4 h-4 text-accent mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4"/></svg>
+                                    <span>{{ line }}</span>
+                                </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% empty %}
+            <div class="space-y-12">
+                <div class="fade-in relative">
+                    <div class="flex items-start gap-8">
+                        <div class="absolute left-8 w-4 h-4 rounded-full bg-accent border-4 border-primary-950 -translate-x-1/2 mt-8 z-10 shadow-lg shadow-accent/30"></div>
+                        <div class="w-16 shrink-0"></div>
+                        <div class="flex-1">
+                            <div class="glass rounded-2xl p-6 sm:p-8 hover:glow-teal transition-all duration-500 group hover:-translate-y-1">
+                                <span class="px-3 py-1 text-xs font-semibold rounded-full bg-accent/10 text-accent border border-accent/20">February 2025 — Present</span>
+                                <h3 class="text-xl font-bold text-white mt-4 mb-1 group-hover:text-accent transition-colors">Backend Developer (Django)</h3>
+                                <p class="text-accent font-medium text-sm mb-4">AmuSoft</p>
+                                <ul class="space-y-2">
+                                    <li class="flex items-start gap-3 text-sm text-primary-300"><svg class="w-4 h-4 text-accent mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4"/></svg><span>Developing scalable web applications using Django</span></li>
+                                    <li class="flex items-start gap-3 text-sm text-primary-300"><svg class="w-4 h-4 text-accent mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4"/></svg><span>Database optimization and performance tuning</span></li>
+                                    <li class="flex items-start gap-3 text-sm text-primary-300"><svg class="w-4 h-4 text-accent mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4"/></svg><span>Integrating AI/ML models into production systems</span></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- ============ PROJECTS SECTION ============ -->
+<section id="projects" class="py-24 px-4 sm:px-6 lg:px-8 border-t border-primary-800/50">
+    <div class="max-w-7xl mx-auto">
+        <div class="text-center mb-16 fade-in">
+            <h2 class="text-4xl sm:text-5xl font-bold text-white mb-4">My <span class="gradient-text">Projects</span></h2>
+            <p class="text-primary-400 max-w-xl mx-auto">Real-world applications built with modern technologies.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {% for project in projects %}
+            <div class="fade-in group glass rounded-2xl overflow-hidden hover:glow-teal transition-all duration-500 hover:-translate-y-1">
+                <div class="h-48 relative overflow-hidden">
+                    {% if project.image %}
+                    <img src="{{ project.image.url }}" alt="{{ project.title }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    {% else %}
+                    <div class="w-full h-full bg-gradient-to-br from-accent/20 via-highlight/10 to-primary-800 flex items-center justify-center group-hover:scale-105 transition-transform duration-500">
+                        <svg class="w-16 h-16 text-accent/30" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg>
+                    </div>
+                    {% endif %}
+                    <div class="absolute top-3 right-3">
+                        <span class="px-2.5 py-1 text-xs font-medium rounded-full bg-accent/20 text-accent border border-accent/30">{{ project.get_level_display }}</span>
+                    </div>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-lg font-bold text-white mb-2 group-hover:text-accent transition-colors">{{ project.title }}</h3>
+                    <p class="text-sm text-primary-400 mb-4 line-clamp-2">{{ project.description }}</p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        {% for tech in project.tech_list %}
+                        <span class="px-2 py-0.5 text-xs font-medium rounded bg-primary-700/50 text-primary-300">{{ tech }}</span>
+                        {% endfor %}
+                    </div>
+                    <div class="flex items-center gap-3">
+                        {% if project.demo_url %}
+                        <a href="{{ project.demo_url }}" target="_blank" rel="noopener" class="text-xs font-semibold text-accent hover:text-accent-light transition-colors flex items-center gap-1">
+                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+                            Live Demo
+                        </a>
+                        {% endif %}
+                        {% if project.github_url %}
+                        <a href="{{ project.github_url }}" target="_blank" rel="noopener" class="text-xs font-semibold text-primary-400 hover:text-white transition-colors flex items-center gap-1">
+                            <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                            GitHub
+                        </a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            {% empty %}
+            <div class="col-span-full text-center py-16">
+                <p class="text-primary-500 text-lg">Projects coming soon...</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- ============ CONTACT SECTION ============ -->
+<section id="contact" class="py-24 px-4 sm:px-6 lg:px-8 border-t border-primary-800/50">
+    <div class="max-w-5xl mx-auto">
+        <div class="text-center mb-16 fade-in">
+            <h2 class="text-4xl sm:text-5xl font-bold text-white mb-4">Let's <span class="gradient-text">Connect</span></h2>
+            <p class="text-primary-400 max-w-xl mx-auto">Have a project in mind or want to collaborate? I'd love to hear from you.</p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-5 gap-10">
+            <!-- Contact Info -->
+            <div class="lg:col-span-2 space-y-6 fade-in">
+                <div class="glass rounded-2xl p-6 hover:glow-teal transition-all duration-300">
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center"><svg class="w-5 h-5 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg></div>
+                        <div><h4 class="text-sm font-semibold text-white">Email</h4><p class="text-sm text-primary-400">saparbayev.azizbek@gmail.com</p></div>
+                    </div>
+                </div>
+                <div class="glass rounded-2xl p-6 hover:glow-teal transition-all duration-300">
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center"><svg class="w-5 h-5 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg></div>
+                        <div><h4 class="text-sm font-semibold text-white">Location</h4><p class="text-sm text-primary-400">Urgench, Uzbekistan</p></div>
+                    </div>
+                </div>
+                <div class="glass rounded-2xl p-6 hover:glow-teal transition-all duration-300">
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center"><svg class="w-5 h-5 text-accent" fill="currentColor" viewBox="0 0 24 24"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg></div>
+                        <div><h4 class="text-sm font-semibold text-white">Telegram</h4><p class="text-sm text-primary-400">@saparbayev_azizbek</p></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contact Form -->
+            <div class="lg:col-span-3 fade-in">
+                <div class="glass rounded-2xl p-8">
+                    <h3 class="text-lg font-semibold text-white mb-6">Send a Message</h3>
+                    <form action="{% url 'core:contact_submit' %}" method="post" class="space-y-5">
+                        {% csrf_token %}
+                        <div>
+                            <label for="{{ form.name.id_for_label }}" class="block text-sm font-medium text-primary-300 mb-2">Name</label>
+                            {{ form.name }}
+                        </div>
+                        <div>
+                            <label for="{{ form.email.id_for_label }}" class="block text-sm font-medium text-primary-300 mb-2">Email</label>
+                            {{ form.email }}
+                        </div>
+                        <div>
+                            <label for="{{ form.message.id_for_label }}" class="block text-sm font-medium text-primary-300 mb-2">Message</label>
+                            {{ form.message }}
+                        </div>
+                        <button type="submit" class="w-full py-3.5 rounded-xl text-sm font-semibold bg-accent text-primary-950 hover:bg-accent-light transition-all duration-300 hover:shadow-lg hover:shadow-accent/25 hover:-translate-y-0.5">
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
