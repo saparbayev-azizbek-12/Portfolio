@@ -17,3 +17,6 @@ __pycache__/
 .vscode/
 .DS_Store
 *.log
+
+# staticfiles
+staticfiles

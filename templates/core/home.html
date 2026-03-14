@@ -1,7 +1,6 @@
 {% extends 'base.html' %}
-
+{% load static %}
 {% block title %}Azizbek Saparbayev — Web & AI Developer{% endblock %}
-
 {% block content %}
 <!-- ============ HERO SECTION ============ -->
 <section id="hero" class="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
@@ -119,14 +118,12 @@
             <!-- Avatar / Visual -->
             <div class="lg:col-span-2 fade-in">
                 <div class="relative">
-                    <div class="aspect-square rounded-2xl overflow-hidden glass glow-teal">
-                        <div class="w-full h-full bg-gradient-to-br from-accent/20 via-highlight/10 to-primary-800 flex items-center justify-center">
-                            <div class="text-center">
-                                <div class="text-8xl mb-4">👨‍💻</div>
-                                <p class="text-accent font-semibold text-lg">Azizbek</p>
-                                <p class="text-primary-400 text-sm">Web & AI Developer</p>
-                            </div>
+                    <div class="glass rounded-2xl p-8 text-center glow-teal">
+                        <div class="mb-4 w-40 h-40 mx-auto rounded-full overflow-hidden border-4 border-accent/30">
+                            <img src="{% static 'images/image.png' %}" alt="Azizbek" class="w-full h-full object-cover">
                         </div>
+                        <p class="text-accent font-semibold text-lg">Azizbek</p>
+                        <p class="text-primary-400 text-sm">Web & AI Developer</p>
                     </div>
                     <!-- Decorative elements -->
                     <div class="absolute -bottom-4 -right-4 w-24 h-24 bg-accent/10 rounded-2xl -z-10"></div>
@@ -158,10 +155,6 @@
             <div class="lg:col-span-3 space-y-8">
                 <!-- English Bio -->
                 <div class="fade-in glass rounded-2xl p-8">
-                    <div class="flex items-center gap-2 mb-4">
-                        <span class="text-lg">🇬🇧</span>
-                        <h3 class="text-lg font-semibold text-white">English</h3>
-                    </div>
                     <div class="space-y-4 text-primary-300 leading-relaxed">
                         <p>
                             I'm <strong class="text-white">Azizbek Saparbayev</strong>, a passionate and ambitious Web & AI Developer

@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Sahifa topilmadi — 404{% endblock %}
+{% block meta_description %}Qidirilgan sahifa topilmadi.{% endblock %}
+
+{% block content %}
+<div class="min-h-screen flex items-center justify-center px-4">
+    <div class="text-center max-w-2xl mx-auto">
+        <!-- 404 Animation -->
+        <div class="relative mb-8">
+            <h1 class="text-9xl font-black gradient-text animate-pulse">404</h1>
+            <div class="absolute inset-0 blur-3xl bg-accent/20 rounded-full"></div>
+        </div>
+
+        <!-- Message -->
+        <h2 class="text-3xl md:text-4xl font-bold text-primary-100 mb-4">
+            Sahifa topilmadi
+        </h2>
+        <p class="text-lg text-primary-400 mb-8 max-w-md mx-auto">
+            Kechirasiz, siz qidirgan sahifa mavjud emas yoki ko'chirilgan.
+        </p>
+
+        <!-- Actions -->
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <a href="{% url 'core:home' %}" 
+               class="inline-flex items-center px-8 py-4 rounded-xl text-base font-semibold
+                      bg-accent text-primary-950 
+                      hover:bg-accent-light transition-all duration-300
+                      transform hover:-translate-y-1 shadow-lg shadow-accent/25">
+                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                          d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
+                </svg>
+                Bosh sahifaga qaytish
+            </a>
+            
+            <a href="{% url 'blog:post_list' %}" 
+               class="inline-flex items-center px-8 py-4 rounded-xl text-base font-semibold
+                      border-2 border-accent/30 text-accent
+                      hover:bg-accent/10 transition-all duration-300">
+                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                          d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9.5a2.5 2.5 0 00-2.5-2.5H15"/>
+                </svg>
+                Blogga o'tish
+            </a>
+        </div>
+
+        <!-- Decorative elements -->
+        <div class="mt-16 flex items-center justify-center space-x-8 text-primary-600">
+            <div class="w-16 h-px bg-gradient-to-r from-transparent via-accent/50 to-transparent"></div>
+            <span class="text-sm font-medium">AS</span>
+            <div class="w-16 h-px bg-gradient-to-r from-transparent via-accent/50 to-transparent"></div>
+        </div>
+    </div>
+</div>
+{% endblock %}
