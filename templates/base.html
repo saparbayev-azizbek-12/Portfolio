@@ -27,38 +27,29 @@
                         sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
                     },
                     colors: {
-                        primary: {
-                            DEFAULT: '#0f172a',
-                            50: '#f8fafc',
-                            100: '#f1f5f9',
-                            200: '#e2e8f0',
-                            300: '#cbd5e1',
-                            400: '#94a3b8',
-                            500: '#64748b',
-                            600: '#475569',
-                            700: '#334155',
-                            800: '#1e293b',
-                            900: '#0f172a',
-                            950: '#0a0f1a',
+                        'brand-dark': '#020617',
+                        'brand-surface': '#0f172a',
+                        'brand-primary': '#6366f1',
+                        'brand-secondary': '#06b6d4',
+                    },
+                    animation: {
+                        'fade-in': 'fade-in 0.5s ease-out forwards',
+                        'slide-up': 'slide-up 0.5s ease-out forwards',
+                        'gradient-x': 'gradient-x 3s ease infinite',
+                    },
+                    keyframes: {
+                        'fade-in': {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
                         },
-                        accent: {
-                            DEFAULT: '#14b8a6',
-                            light: '#2dd4bf',
-                            dark: '#0d9488',
-                            50: '#f0fdfa',
-                            100: '#ccfbf1',
-                            200: '#99f6e4',
-                            300: '#5eead4',
-                            400: '#2dd4bf',
-                            500: '#14b8a6',
-                            600: '#0d9488',
-                            700: '#0f766e',
+                        'slide-up': {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
                         },
-                        highlight: {
-                            DEFAULT: '#6366f1',
-                            light: '#818cf8',
-                            dark: '#4f46e5',
-                        }
+                        'gradient-x': {
+                            '0%, 100%': { 'background-size': '200% 200%', 'background-position': 'left center' },
+                            '50%': { 'background-size': '200% 200%', 'background-position': 'right center' },
+                        },
                     }
                 }
             }
@@ -75,46 +66,44 @@
 
         /* Custom scrollbar */
         ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: #0a0f1a; }
-        ::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
-        ::-webkit-scrollbar-thumb:hover { background: #475569; }
+        ::-webkit-scrollbar-track { background: #020617; }
+        ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #334155; }
 
-        /* Glassmorphism utility */
-        .glass {
-            background: rgba(30, 41, 59, 0.6);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 1px solid rgba(148, 163, 184, 0.1);
+        /* Base Components */
+        .glass-card {
+            background: rgba(15, 23, 42, 0.5);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .glass-card:hover {
+            border-color: rgba(99, 102, 241, 0.5);
         }
 
-        /* Gradient text */
         .gradient-text {
-            background: linear-gradient(135deg, #14b8a6 0%, #6366f1 50%, #2dd4bf 100%);
+            background: linear-gradient(to right, #6366f1, #06b6d4);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
 
-        /* Glow effect */
-        .glow-teal { box-shadow: 0 0 20px rgba(20, 184, 166, 0.15); }
-        .glow-teal-strong { box-shadow: 0 0 30px rgba(20, 184, 166, 0.25); }
+        .btn-primary {
+            background-color: #6366f1;
+            color: white;
+            transition: all 0.2s;
+            box-shadow: 0 10px 15px -3px rgba(99, 102, 241, 0.2);
+        }
+        .btn-primary:hover {
+            background-color: #4f46e5;
+        }
+        .btn-primary:active {
+            transform: scale(0.95);
+        }
 
-        /* Fade in animation */
+        /* Animation utilities */
         [x-cloak] { display: none !important; }
-
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        .animate-fade-in-up {
-            animation: fadeInUp 0.6s ease-out forwards;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-        }
-        .animate-float { animation: float 3s ease-in-out infinite; }
 
         /* Prose styles for blog */
         .prose-custom h1, .prose-custom h2, .prose-custom h3 {
@@ -124,12 +113,12 @@
             margin-bottom: 0.5em;
         }
         .prose-custom p { color: #cbd5e1; line-height: 1.8; margin-bottom: 1em; }
-        .prose-custom a { color: #14b8a6; text-decoration: underline; }
+        .prose-custom a { color: #6366f1; text-decoration: underline; }
         .prose-custom code {
             background: #1e293b;
             padding: 2px 6px;
             border-radius: 4px;
-            color: #2dd4bf;
+            color: #06b6d4;
             font-size: 0.9em;
         }
         .prose-custom pre {
@@ -138,12 +127,13 @@
             border-radius: 8px;
             overflow-x: auto;
             margin: 1em 0;
+            border: 1px solid rgba(255, 255, 255, 0.05);
         }
         .prose-custom pre code { background: transparent; padding: 0; }
         .prose-custom ul, .prose-custom ol { color: #cbd5e1; margin: 1em 0; padding-left: 1.5em; }
         .prose-custom li { margin-bottom: 0.5em; }
         .prose-custom blockquote {
-            border-left: 3px solid #14b8a6;
+            border-left: 3px solid #6366f1;
             padding-left: 1em;
             color: #94a3b8;
             font-style: italic;
@@ -160,11 +150,11 @@
     {% block extra_head %}{% endblock %}
 </head>
 
-<body class="bg-primary-950 text-primary-200 font-sans min-h-screen flex flex-col antialiased"
+<body class="bg-brand-dark text-slate-100 font-sans min-h-screen flex flex-col antialiased"
       x-data="{ mobileMenu: false }">
 
     <!-- ============ NAVBAR ============ -->
-    <nav class="fixed top-0 left-0 right-0 z-50 glass transition-all duration-300"
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-brand-dark/80 backdrop-blur-xl border-b border-white/5 transition-all duration-300"
          x-data="{ scrolled: false }"
          @scroll.window="scrolled = (window.scrollY > 50)"
          :class="scrolled ? 'shadow-lg shadow-black/20' : ''">
@@ -178,22 +168,22 @@
                 <!-- Desktop Navigation -->
                 <div class="hidden lg:flex items-center space-x-1">
                     <a href="{% url 'core:home' %}#hero"
-                       class="px-4 py-2 rounded-lg text-sm font-medium text-primary-300 hover:text-accent hover:bg-accent/5 transition-all duration-200"
+                       class="px-4 py-2 rounded-lg text-sm font-medium text-slate-400 hover:text-brand-primary hover:bg-brand-primary/5 transition-all duration-200"
                        aria-label="Home">Home</a>
                     <a href="{% url 'core:home' %}#about"
-                       class="px-4 py-2 rounded-lg text-sm font-medium text-primary-300 hover:text-accent hover:bg-accent/5 transition-all duration-200"
+                       class="px-4 py-2 rounded-lg text-sm font-medium text-slate-400 hover:text-brand-primary hover:bg-brand-primary/5 transition-all duration-200"
                        aria-label="About">About</a>
                     <a href="{% url 'core:home' %}#experience"
-                       class="px-4 py-2 rounded-lg text-sm font-medium text-primary-300 hover:text-accent hover:bg-accent/5 transition-all duration-200"
+                       class="px-4 py-2 rounded-lg text-sm font-medium text-slate-400 hover:text-brand-primary hover:bg-brand-primary/5 transition-all duration-200"
                        aria-label="Experience">Experience</a>
                     <a href="{% url 'core:home' %}#projects"
-                       class="px-4 py-2 rounded-lg text-sm font-medium text-primary-300 hover:text-accent hover:bg-accent/5 transition-all duration-200"
+                       class="px-4 py-2 rounded-lg text-sm font-medium text-slate-400 hover:text-brand-primary hover:bg-brand-primary/5 transition-all duration-200"
                        aria-label="Projects">Projects</a>
                     <a href="{% url 'core:home' %}#contact"
-                       class="px-4 py-2 rounded-lg text-sm font-medium text-primary-300 hover:text-accent hover:bg-accent/5 transition-all duration-200"
+                       class="px-4 py-2 rounded-lg text-sm font-medium text-slate-400 hover:text-brand-primary hover:bg-brand-primary/5 transition-all duration-200"
                        aria-label="Contact">Contact</a>
                     <a href="{% url 'blog:post_list' %}"
-                       class="px-4 py-2 rounded-lg text-sm font-medium {% if request.resolver_match.app_name == 'blog' %}text-accent bg-accent/10{% else %}text-primary-300 hover:text-accent hover:bg-accent/5{% endif %} transition-all duration-200"
+                       class="px-4 py-2 rounded-lg text-sm font-medium {% if request.resolver_match.app_name == 'blog' %}text-brand-primary bg-brand-primary/10{% else %}text-slate-400 hover:text-brand-primary hover:bg-brand-primary/5{% endif %} transition-all duration-200"
                        aria-label="Blog">Blog</a>
                 </div>
 
@@ -202,9 +192,8 @@
                     <!-- CV Download -->
                     <a href="{{ MEDIA_URL }}cv/Azizbek_Saparbayev_CV.pdf"
                        class="hidden sm:inline-flex items-center px-4 py-2 rounded-lg text-sm font-semibold
-                              bg-accent/10 text-accent border border-accent/30
-                              hover:bg-accent hover:text-primary-950 hover:border-accent
-                              transition-all duration-300"
+                              bg-brand-primary/10 text-brand-primary border border-brand-primary/30
+                              hover:bg-brand-primary hover:text-white transition-all duration-300"
                        download aria-label="Download CV">
                         <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -239,15 +228,15 @@
              x-transition:leave-start="opacity-100 translate-y-0"
              x-transition:leave-end="opacity-0 -translate-y-2"
              x-cloak
-             class="lg:hidden glass border-t border-primary-700/50">
+             class="lg:hidden bg-brand-dark/95 backdrop-blur-xl border-t border-white/5">
             <div class="px-4 py-4 space-y-1">
-                <a href="{% url 'core:home' %}#hero" @click="mobileMenu = false" class="block px-4 py-3 rounded-lg text-sm font-medium text-primary-300 hover:text-accent hover:bg-accent/5 transition">Home</a>
-                <a href="{% url 'core:home' %}#about" @click="mobileMenu = false" class="block px-4 py-3 rounded-lg text-sm font-medium text-primary-300 hover:text-accent hover:bg-accent/5 transition">About</a>
-                <a href="{% url 'core:home' %}#experience" @click="mobileMenu = false" class="block px-4 py-3 rounded-lg text-sm font-medium text-primary-300 hover:text-accent hover:bg-accent/5 transition">Experience</a>
-                <a href="{% url 'core:home' %}#projects" @click="mobileMenu = false" class="block px-4 py-3 rounded-lg text-sm font-medium text-primary-300 hover:text-accent hover:bg-accent/5 transition">Projects</a>
-                <a href="{% url 'blog:post_list' %}" @click="mobileMenu = false" class="block px-4 py-3 rounded-lg text-sm font-medium {% if request.resolver_match.app_name == 'blog' %}text-accent bg-accent/10{% else %}text-primary-300 hover:text-accent hover:bg-accent/5{% endif %} transition">Blog</a>
-                <a href="{% url 'core:home' %}#contact" @click="mobileMenu = false" class="block px-4 py-3 rounded-lg text-sm font-medium text-primary-300 hover:text-accent hover:bg-accent/5 transition">Contact</a>
-                <a href="{{ MEDIA_URL }}cv/Azizbek_Saparbayev_CV.pdf" download class="block px-4 py-3 rounded-lg text-sm font-semibold text-accent border border-accent/30 hover:bg-accent hover:text-primary-950 transition mt-2 text-center">Download Resume</a>
+                <a href="{% url 'core:home' %}#hero" @click="mobileMenu = false" class="block px-4 py-3 rounded-lg text-sm font-medium text-slate-300 hover:text-brand-primary hover:bg-brand-primary/5 transition">Home</a>
+                <a href="{% url 'core:home' %}#about" @click="mobileMenu = false" class="block px-4 py-3 rounded-lg text-sm font-medium text-slate-300 hover:text-brand-primary hover:bg-brand-primary/5 transition">About</a>
+                <a href="{% url 'core:home' %}#experience" @click="mobileMenu = false" class="block px-4 py-3 rounded-lg text-sm font-medium text-slate-300 hover:text-brand-primary hover:bg-brand-primary/5 transition">Experience</a>
+                <a href="{% url 'core:home' %}#projects" @click="mobileMenu = false" class="block px-4 py-3 rounded-lg text-sm font-medium text-slate-300 hover:text-brand-primary hover:bg-brand-primary/5 transition">Projects</a>
+                <a href="{% url 'blog:post_list' %}" @click="mobileMenu = false" class="block px-4 py-3 rounded-lg text-sm font-medium {% if request.resolver_match.app_name == 'blog' %}text-brand-primary bg-brand-primary/10{% else %}text-slate-300 hover:text-brand-primary hover:bg-brand-primary/5{% endif %} transition">Blog</a>
+                <a href="{% url 'core:home' %}#contact" @click="mobileMenu = false" class="block px-4 py-3 rounded-lg text-sm font-medium text-slate-300 hover:text-brand-primary hover:bg-brand-primary/5 transition">Contact</a>
+                <a href="{{ MEDIA_URL }}cv/Azizbek_Saparbayev_CV.pdf" download class="block px-4 py-3 rounded-lg text-sm font-semibold text-brand-primary border border-brand-primary/30 hover:bg-brand-primary hover:text-white transition mt-2 text-center">Download Resume</a>
             </div>
         </div>
     </nav>
@@ -260,8 +249,8 @@
              x-transition:leave="transition ease-in duration-300"
              x-transition:leave-start="opacity-100 translate-x-0"
              x-transition:leave-end="opacity-0 translate-x-4"
-             class="glass rounded-xl px-5 py-3 text-sm font-medium
-                    {% if message.tags == 'success' %}text-accent border-accent/30{% else %}text-primary-200{% endif %}
+             class="glass-card rounded-xl px-5 py-3 text-sm font-medium
+                    {% if message.tags == 'success' %}text-brand-secondary border-brand-secondary/30{% else %}text-slate-200{% endif %}
                     shadow-lg shadow-black/20 cursor-pointer"
              @click="show = false">
             {{ message }}
@@ -276,7 +265,7 @@
     </main>
 
     <!-- ============ FOOTER ============ -->
-    <footer class="border-t border-primary-800/50 mt-auto">
+    <footer class="border-t border-white/5 mt-auto bg-brand-dark">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <!-- Brand -->
@@ -299,11 +288,11 @@
                 </div>
                 <!-- Social -->
                 <div>
-                    <h4 class="text-sm font-semibold text-primary-100 uppercase tracking-wider mb-4">Connect</h4>
+                    <h4 class="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-4">Connect</h4>
                     <div class="flex space-x-4">
                         <!-- GitHub -->
                         <a href="https://github.com/saparbayev-azizbek-12" target="_blank" rel="noopener noreferrer"
-                           class="p-2 rounded-lg text-primary-400 hover:text-accent hover:bg-accent/10 transition-all"
+                           class="p-2 rounded-lg text-slate-400 hover:text-brand-primary hover:bg-brand-primary/10 transition-all"
                            aria-label="GitHub">
                             <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                                 <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
@@ -329,11 +318,11 @@
                 </div>
             </div>
             <!-- Copyright -->
-            <div class="mt-10 pt-8 border-t border-primary-800/50 text-center">
-                <p class="text-sm text-primary-500">
+            <div class="mt-10 pt-8 border-t border-white/5 text-center">
+                <p class="text-sm text-slate-500">
                     &copy; 2026 Azizbek Saparbayev. Built with
-                    <span class="text-accent">Django</span> &
-                    <span class="text-accent">Tailwind CSS</span>.
+                    <span class="text-brand-primary">Django</span> &
+                    <span class="text-brand-secondary">Tailwind CSS</span>.
                     All rights reserved.
                 </p>
             </div>
@@ -341,7 +330,7 @@
     </footer>
 
     <!-- Scroll-to-top button -->
-    <button x-data="{ visible: false }"
+        <button x-data="{ visible: false }"
             @scroll.window="visible = (window.scrollY > 400)"
             x-show="visible"
             x-transition:enter="transition ease-out duration-300"
@@ -351,8 +340,8 @@
             x-transition:leave-start="opacity-100 translate-y-0"
             x-transition:leave-end="opacity-0 translate-y-4"
             @click="window.scrollTo({ top: 0, behavior: 'smooth' })"
-            class="fixed bottom-8 right-8 z-40 p-3 rounded-full bg-accent/20 text-accent border border-accent/30
-                   hover:bg-accent hover:text-primary-950 transition-all duration-300 shadow-lg"
+            class="fixed bottom-8 right-8 z-40 p-3 rounded-full bg-brand-primary/20 text-brand-primary border border-brand-primary/30
+                   hover:bg-brand-primary hover:text-white transition-all duration-300 shadow-lg"
             aria-label="Scroll to top">
         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"/>
@@ -365,7 +354,7 @@
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
-                        entry.target.classList.add('animate-fade-in-up');
+                        entry.target.classList.add('animate-slide-up');
                         observer.unobserve(entry.target);
                     }
                 });
