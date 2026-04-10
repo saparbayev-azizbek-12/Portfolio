@@ -190,7 +190,7 @@
                 <!-- Right side: Theme toggle + CV button -->
                 <div class="flex items-center space-x-3">
                     <!-- CV Download -->
-                    <a href="{{ MEDIA_URL }}cv/Azizbek_Saparbayev_CV.pdf"
+                    <a href="{{ MEDIA_URL }}cv/azizbek_saparbayev.pdf"
                        class="hidden sm:inline-flex items-center px-4 py-2 rounded-lg text-sm font-semibold
                               bg-brand-primary/10 text-brand-primary border border-brand-primary/30
                               hover:bg-brand-primary hover:text-white transition-all duration-300"
@@ -236,7 +236,7 @@
                 <a href="{% url 'core:home' %}#projects" @click="mobileMenu = false" class="block px-4 py-3 rounded-lg text-sm font-medium text-slate-300 hover:text-brand-primary hover:bg-brand-primary/5 transition">Projects</a>
                 <a href="{% url 'blog:post_list' %}" @click="mobileMenu = false" class="block px-4 py-3 rounded-lg text-sm font-medium {% if request.resolver_match.app_name == 'blog' %}text-brand-primary bg-brand-primary/10{% else %}text-slate-300 hover:text-brand-primary hover:bg-brand-primary/5{% endif %} transition">Blog</a>
                 <a href="{% url 'core:home' %}#contact" @click="mobileMenu = false" class="block px-4 py-3 rounded-lg text-sm font-medium text-slate-300 hover:text-brand-primary hover:bg-brand-primary/5 transition">Contact</a>
-                <a href="{{ MEDIA_URL }}cv/Azizbek_Saparbayev_CV.pdf" download class="block px-4 py-3 rounded-lg text-sm font-semibold text-brand-primary border border-brand-primary/30 hover:bg-brand-primary hover:text-white transition mt-2 text-center">Download Resume</a>
+                <a href="{{ MEDIA_URL }}cv/azizbek_saparbayev.pdf" download class="block px-4 py-3 rounded-lg text-sm font-semibold text-brand-primary border border-brand-primary/30 hover:bg-brand-primary hover:text-white transition mt-2 text-center">Download Resume</a>
             </div>
         </div>
     </nav>
